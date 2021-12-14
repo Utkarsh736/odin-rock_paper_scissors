@@ -15,7 +15,7 @@ function computerPlay(){
 
 // Function to display result of one round
 
-function main(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection){
 
     switch(playerSelection + computerSelection){
         case "rockrock":
@@ -53,7 +53,7 @@ function game(){
         console.log(`Game ${i}:`)
         console.log(`Player: ${playerSelection}`)
         console.log(`Comp: ${computerSelection}`)
-        console.log(`Result: ${main(playerSelection, computerSelection)}`)
+        console.log(`Result: ${playRound(playerSelection, computerSelection)}`)
         console.log('\n')
     }
 }
