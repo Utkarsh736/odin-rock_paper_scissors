@@ -13,14 +13,6 @@ function computerPlay(){
 
 }
 
-computerSelection = computerPlay()
-
-// Taking user's input
-
-// let getInput = prompt("Enter you option")
-let playerSelection  = 'rock'
-
-
 // Function to display result of one round
 
 function main(playerSelection, computerSelection){
@@ -46,7 +38,25 @@ function main(playerSelection, computerSelection){
     }
 }
 
-console.log(`Player: ${playerSelection}`)
-console.log(`Comp: ${computerSelection}`)
-console.log(`Result: ${main(playerSelection, computerSelection)}`)
+function game(){
+    // Loop to execute the game 5 times
+    for (let i = 1; i<6; i++){
+
+        // Taking User's Input
+        let getInput = prompt("Enter you option")
+        let playerSelection  = getInput.toLowerCase()
+
+        // Computer's choice
+        let computerSelection = computerPlay()
+
+        // Displaying result
+        console.log(`Game ${i}:`)
+        console.log(`Player: ${playerSelection}`)
+        console.log(`Comp: ${computerSelection}`)
+        console.log(`Result: ${main(playerSelection, computerSelection)}`)
+        console.log('\n')
+    }
+}
+
+game()
 
