@@ -6,65 +6,47 @@
 
 function computerPlay(){
     let options = ["rock", "paper", "scissor"]
-    let computerSelection = options[Math.floor(Math.random(options)*options.length)]
+    let computerChoice = options[Math.floor(Math.random(options)*options.length)]
 
-    // console.log("Comp1: " + computerSelection)
-    return(computerSelection)
-    
+    // console.log(computerChoice)
+    return(computerChoice)
+
 }
+
+computerSelection = computerPlay()
 
 // Taking user's input
 
-let getInput = prompt("Enter you option")
-let flag = 0
-if (getInput == null){
-    console.log("Try Again")
-}
-else{
-    flag = 1
-    
-}
+// let getInput = prompt("Enter you option")
+let playerSelection  = 'rock'
+
 
 // Function to display result of one round
-if (flag == 1){
-    let playerSelection  = getInput.toLowerCase()
 
-    function main(playerSelection, computerSelection){
+function main(playerSelection, computerSelection){
 
-        switch(playerSelection + computerSelection){
-            case "rockrock":
-            case "paperpaper":
-            case "scissorscissor":
-                return("Draw")
-                break
-            
-            case "rockscissor" :
-            case "paperrock":
-            case "scissorpaper":
-                return("Win")
-                break
-            
-            case "rockpaper" :
-            case "paperscissor":
-            case "scissorrock":
-                return("Lose")
-                break 
-        }
-    }
+    switch(playerSelection + computerSelection){
+        case "rockrock":
+        case "paperpaper":
+        case "scissorscissor":
+            return("Draw")
+            break
 
-    console.log("comp2: " + computerPlay())
-    // console.log(main(playerSelection, computerPlay()))
-    console.log("comp3: " + computerPlay())
-}
+        case "rockscissor" :
+        case "paperrock":
+        case "scissorpaper":
+            return("Win")
+            break
 
-
-function game(){
-    for(let i=0; i<=5; i++){
-        main(playerSelection, computerPlay())
+        case "rockpaper" :
+        case "paperscissor":
+        case "scissorrock":
+            return("Lose")
+            break 
     }
 }
 
-game()
-
-
+console.log(`Player: ${playerSelection}`)
+console.log(`Comp: ${computerSelection}`)
+console.log(`Result: ${main(playerSelection, computerSelection)}`)
 
