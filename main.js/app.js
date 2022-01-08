@@ -5,7 +5,7 @@
 // computerPlay Function
 
 function computerPlay(){
-    let options = ["rock", "paper", "scissor"]
+    let options = ["r", "p", "s"]
     let computerChoice = options[Math.floor(Math.random(options)*options.length)]
 
     // console.log(computerChoice)
@@ -13,50 +13,64 @@ function computerPlay(){
 
 }
 
+// button eventListener
+
+// const buttons = document.querySelectorAll('button')
+// buttons.forEach((button) => {
+//     window.addEventListener('click', () => {
+//         let playerSelection = button.id;
+//       });
+// });
+
+function playerChoice(e){
+        console.log(button.id);
+}
+
+// console.log(playerSelection);
+const buttons = document.querySelectorAll('button')
+buttons.forEach(button => button.addEventListener('choice'))
+window.addEventListener('click', playerChoice);
+
 // Function to display result of one round
 
 function playRound(playerSelection, computerSelection){
 
     switch(playerSelection + computerSelection){
-        case "rockrock":
-        case "paperpaper":
-        case "scissorscissor":
+        case "rr":
+        case "pp":
+        case "ss":
             return("Draw")
             break
 
-        case "rockscissor" :
-        case "paperrock":
-        case "scissorpaper":
+        case "rs" :
+        case "pr":
+        case "sp":
             return("Win")
             break
 
-        case "rockpaper" :
-        case "paperscissor":
-        case "scissorrock":
+        case "rp" :
+        case "ps":
+        case "sr":
             return("Lose")
             break 
     }
 }
 
 function game(){
-    // Loop to execute the game 5 times
-    for (let i = 1; i<6; i++){
 
-        // Taking User's Input
-        let getInput = prompt("Enter you option")
-        let playerSelection  = getInput.toLowerCase()
+    // Taking User's Input
+    // let getInput = prompt("Enter you option")
+    // let playerSelection  = getInput.toLowerCase()
 
-        // Computer's choice
-        let computerSelection = computerPlay()
+    // Computer's choice
+    let computerSelection = computerPlay()
 
-        // Displaying result
-        console.log(`Game ${i}:`)
-        console.log(`Player: ${playerSelection}`)
-        console.log(`Comp: ${computerSelection}`)
-        console.log(`Result: ${playRound(playerSelection, computerSelection)}`)
-        console.log('\n')
-    }
+    // Displaying result
+
+    console.log(`Player: ${playerSelection}`)
+    console.log(`Comp: ${computerSelection}`)
+    console.log(`Result: ${playRound(playerSelection, computerSelection)}`)
 }
 
-game()
+// game()
 
