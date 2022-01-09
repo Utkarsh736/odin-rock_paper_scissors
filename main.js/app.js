@@ -13,64 +13,58 @@ function computerPlay(){
 
 }
 
-// button eventListener
 
-// const buttons = document.querySelectorAll('button')
-// buttons.forEach((button) => {
-//     window.addEventListener('click', () => {
-//         let playerSelection = button.id;
-//       });
-// });
-
-function playerChoice(e){
-        console.log(button.id);
-}
-
-// console.log(playerSelection);
-const buttons = document.querySelectorAll('button')
-buttons.forEach(button => button.addEventListener('choice'))
-window.addEventListener('click', playerChoice);
+// console.log(choice);
 
 // Function to display result of one round
 
 function playRound(playerSelection, computerSelection){
 
+    let result;
+
     switch(playerSelection + computerSelection){
         case "rr":
         case "pp":
         case "ss":
-            return("Draw")
+            result = 'Draw';
+            game(playerSelection, computerSelection, result);
             break
 
         case "rs" :
         case "pr":
         case "sp":
-            return("Win")
+            result = 'Win';
+            game(playerSelection, computerSelection, result);
             break
 
         case "rp" :
         case "ps":
         case "sr":
-            return("Lose")
-            break 
-    }
-}
+            result = 'Lose';
+            game(playerSelection, computerSelection, result);
+            break;
+    };
+};
 
-function game(){
+// Button eventListener
 
-    // Taking User's Input
-    // let getInput = prompt("Enter you option")
-    // let playerSelection  = getInput.toLowerCase()
+let buttons = document.querySelectorAll('button');
+buttons.forEach(button => {
+    button.addEventListener('click', () => {
+        let playerSelection = button.id;
+        let computerSelection = computerPlay();
+        playRound(playerSelection, computerSelection);
+    });
+});
 
-    // Computer's choice
-    let computerSelection = computerPlay()
+
+
+function game(playerSelection, computerSelection, result){
 
     // Displaying result
 
     console.log(`Player: ${playerSelection}`)
     console.log(`Comp: ${computerSelection}`)
-    console.log(`Result: ${playRound(playerSelection, computerSelection)}`)
+    console.log(result);
 }
-
-// game()
 
