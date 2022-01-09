@@ -68,3 +68,12 @@ function game(playerSelection, computerSelection, result){
     console.log(result);
 }
 
+// Dom method
+
+const body = document.body;
+const div = document.createElement("div");
+div.classList.add('result');
+
+div.innerHTML = 'Div Created';
+
+body.append(div)
