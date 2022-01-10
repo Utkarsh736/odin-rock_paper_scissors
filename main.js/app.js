@@ -2,6 +2,26 @@
 // 2. Take user's input
 // 3. Create function that gives the result
 
+
+// Dom method
+
+const body = document.body;
+const div = document.createElement("div");
+div.classList.add('result');
+
+const text = document.createElement("div");
+text.classList.add('text');
+text.innerHTML = 'Score';
+div.append(text);
+
+const scoreboard = document.createElement("div");
+scoreboard.classList.add('scoreboard');
+scoreboard.innerHTML = 'Player';
+div.append(scoreboard);
+
+body.append(div)
+
+
 // computerPlay Function
 
 function computerPlay(){
@@ -68,12 +88,3 @@ function game(playerSelection, computerSelection, result){
     console.log(result);
 }
 
-// Dom method
-
-const body = document.body;
-const div = document.createElement("div");
-div.classList.add('result');
-
-div.innerHTML = 'Div Created';
-
-body.append(div)
