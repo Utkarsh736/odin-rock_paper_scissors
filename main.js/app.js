@@ -1,26 +1,11 @@
-// 1. Create a function computerPlay
-// 2. Take user's input
-// 3. Create function that gives the result
-
-
-// Dom method
-
-const body = document.body;
-const div = document.createElement("div");
-div.classList.add('result');
-
-const text = document.createElement("div");
-text.classList.add('text');
-text.innerHTML = 'Score';
-div.append(text);
-
-const scoreboard = document.createElement("div");
-scoreboard.classList.add('scoreboard');
-scoreboard.innerHTML = 'Player';
-div.append(scoreboard);
-
-body.append(div)
-
+let userScore = 0;
+let compScore = 0;
+const rock_button = document.getElementById('r');
+const paper_button = document.getElementById('p');
+const scissors_button = document.getElementById('s');
+const user_span = document.getElementById('user-score');
+const comp_span = document.getElementById('comp-score');
+const result_p = document.querySelector('.result > p');
 
 // computerPlay Function
 
@@ -28,63 +13,66 @@ function computerPlay(){
     let options = ["r", "p", "s"]
     let computerChoice = options[Math.floor(Math.random(options)*options.length)]
 
-    // console.log(computerChoice)
     return(computerChoice)
 
 }
 
+// Functions for the result
 
-// console.log(choice);
+function win(){
+    userScore++;
+    user_span.innerHTML = userScore;
+    comp_span.innerHTML = compScore;
+    result_p.innerHTML = `Win`;
+};
+
+function lose(){
+    compScore++;
+    user_span.innerHTML = userScore;
+    comp_span.innerHTML = compScore;
+    result_p.innerHTML = `Lost`;
+};
+
+function draw(){
+    user_span.innerHTML = userScore;
+    comp_span.innerHTML = compScore;
+    result_p.innerHTML = `Draw`;
+};
+
 
 // Function to display result of one round
 
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection){
 
-    let result;
+    let computerSelection = computerPlay();
 
     switch(playerSelection + computerSelection){
+        
         case "rr":
         case "pp":
         case "ss":
-            result = 'Draw';
-            game(playerSelection, computerSelection, result);
+            draw();
             break
 
         case "rs" :
         case "pr":
         case "sp":
-            result = 'Win';
-            game(playerSelection, computerSelection, result);
+            win();
             break
 
         case "rp" :
         case "ps":
         case "sr":
-            result = 'Lose';
-            game(playerSelection, computerSelection, result);
-            break;
+            lose();
+            break
     };
 };
 
-// Button eventListener
+function main(){
+    rock_button.addEventListener('click', () => playRound('r'));
+    paper_button.addEventListener('click', () => playRound('p'));
+    scissors_button.addEventListener('click', () => playRound('s'));
+};
 
-let buttons = document.querySelectorAll('button');
-buttons.forEach(button => {
-    button.addEventListener('click', () => {
-        let playerSelection = button.id;
-        let computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
-    });
-});
-
-
-
-function game(playerSelection, computerSelection, result){
-
-    // Displaying result
-
-    console.log(`Player: ${playerSelection}`)
-    console.log(`Comp: ${computerSelection}`)
-    console.log(result);
-}
+main();
 
