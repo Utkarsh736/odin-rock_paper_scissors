@@ -8,6 +8,11 @@ const user_span = document.getElementById('user-score');
 const comp_span = document.getElementById('comp-score');
 const result_p = document.querySelector('.result > p');
 
+var func_rock = playRound('r');
+var func_paper = playRound('p');
+var func_scissors = playRound('s');
+
+
 // computerPlay Function
 
 function computerPlay(){
@@ -33,9 +38,9 @@ function win(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} beats ${letterConverter(compChoice)}. You Win`;
 
-    if(userScore > 5){
-        gameWinner('User');
-    }
+    // if(userScore > 5){
+    //     gameWinner('User');
+    // }
 
 };
 
@@ -45,9 +50,9 @@ function lose(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} loses to ${letterConverter(compChoice)}. You Lost`;
 
-    if(compScore > 5){
-        gameWinner('Comp');
-    };
+    // if(compScore > 5){
+    //     gameWinner('Comp');
+    // };
 };
 
 function draw(userChoice, compChoice){
@@ -84,19 +89,20 @@ function playRound(userChoice){
     };
 };
 
+
 function main(){
-    rock_button.addEventListener('click', () => playRound('r'));
-    paper_button.addEventListener('click', () => playRound('p'));
-    scissors_button.addEventListener('click', () => playRound('s'));
+    rock_button.addEventListener('click', func_rock);
+    paper_button.addEventListener('click', func_paper);
+    scissors_button.addEventListener('click', func_scissors);
 };
 
 main();
 
 
 
-function gameWinner(winner){
-    result_p.innerHTML = `Game Over`;
-    rock_button.removeEventListener('click', playRound('r'));
-    paper_button.removeEventListener('click', playRound('p'));
-    scissors_button.removeEventListener('click', playRound('s'));
-}
+// function gameWinner(winner){
+//     result_p.innerHTML = `Game Over`;
+//     rock_button.removeEventListener('click', playRound('r'));
+//     paper_button.removeEventListener('click', playRound('p'));
+//     scissors_button.removeEventListener('click', playRound('s'));
+// }
