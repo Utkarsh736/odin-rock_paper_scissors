@@ -1,6 +1,7 @@
 let userScore = 0;
 let compScore = 0;
 
+const buttons = document.querySelectorAll('button');
 const rock_button = document.getElementById('r');
 const paper_button = document.getElementById('p');
 const scissors_button = document.getElementById('s');
@@ -21,14 +22,22 @@ function computerPlay(){
 
     return(computerSelection);
 
-}
+};
+
+// Function to finish the game
+function game_over(){
+    result_p.textContent = `Game Over`;
+    buttons.forEach(elem => {
+        elem.disabled = true
+    });
+};
 
 
 function letterConverter(letter){
     if(letter === "r")return 'Rock';
     if(letter === "p")return 'Paper';
     return 'Sciccors';
-}
+};
 
 // Functions for the result
 
@@ -38,9 +47,11 @@ function win(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} beats ${letterConverter(compChoice)}. You Win`;
 
-    // if(userScore > 5){
-    //     gameWinner('User');
-    // }
+
+    if(userScore == 5){
+        game_over();
+    };
+
 
 };
 
@@ -50,9 +61,11 @@ function lose(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} loses to ${letterConverter(compChoice)}. You Lost`;
 
-    // if(compScore > 5){
-    //     gameWinner('Comp');
-    // };
+
+    if(compScore == 5){
+        game_over();
+    };
+
 };
 
 function draw(userChoice, compChoice){
@@ -91,18 +104,16 @@ function playRound(userChoice){
 
 
 function main(){
-    rock_button.addEventListener('click', func_rock);
-    paper_button.addEventListener('click', func_paper);
-    scissors_button.addEventListener('click', func_scissors);
+
+    buttons.forEach((button => {
+        button.addEventListener('click', ()=>{
+            playRound(button.id);
+        });
+    }));
+
 };
 
-main();
 
 
+main()
 
-// function gameWinner(winner){
-//     result_p.innerHTML = `Game Over`;
-//     rock_button.removeEventListener('click', playRound('r'));
-//     paper_button.removeEventListener('click', playRound('p'));
-//     scissors_button.removeEventListener('click', playRound('s'));
-// }
