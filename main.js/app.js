@@ -9,6 +9,11 @@ const user_span = document.getElementById('user-score');
 const comp_span = document.getElementById('comp-score');
 const result_p = document.querySelector('.result > p');
 
+var func_rock = playRound('r');
+var func_paper = playRound('p');
+var func_scissors = playRound('s');
+
+
 // computerPlay Function
 
 function computerPlay(){
@@ -42,9 +47,11 @@ function win(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} beats ${letterConverter(compChoice)}. You Win`;
 
+
     if(userScore == 5){
         game_over();
     };
+
 
 };
 
@@ -54,9 +61,11 @@ function lose(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} loses to ${letterConverter(compChoice)}. You Lost`;
 
+
     if(compScore == 5){
         game_over();
     };
+
 };
 
 function draw(userChoice, compChoice){
@@ -93,13 +102,18 @@ function playRound(userChoice){
     };
 };
 
+
 function main(){
+
     buttons.forEach((button => {
         button.addEventListener('click', ()=>{
             playRound(button.id);
         });
     }));
+
 };
 
 
+
 main()
+
