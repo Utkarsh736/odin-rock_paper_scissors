@@ -2,19 +2,10 @@ let userScore = 0;
 let compScore = 0;
 
 const buttons = document.querySelectorAll('button');
-const rock_button = document.getElementById('r');
-const paper_button = document.getElementById('p');
-const scissors_button = document.getElementById('s');
 const user_span = document.getElementById('user-score');
 const comp_span = document.getElementById('comp-score');
 const result_p = document.querySelector('.result > p');
 
-var func_rock = playRound('r');
-var func_paper = playRound('p');
-var func_scissors = playRound('s');
-
-
-// computerPlay Function
 
 function computerPlay(){
     let options = ["r", "p", "s"];
@@ -24,7 +15,6 @@ function computerPlay(){
 
 };
 
-// Function to finish the game
 function game_over(){
     result_p.textContent = `Game Over`;
     buttons.forEach(elem => {
@@ -39,14 +29,12 @@ function letterConverter(letter){
     return 'Sciccors';
 };
 
-// Functions for the result
 
 function win(userChoice, compChoice){
     userScore++;
     user_span.innerHTML = userScore;
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} beats ${letterConverter(compChoice)}. You Win`;
-
 
     if(userScore == 5){
         game_over();
@@ -61,7 +49,6 @@ function lose(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} loses to ${letterConverter(compChoice)}. You Lost`;
 
-
     if(compScore == 5){
         game_over();
     };
@@ -74,7 +61,6 @@ function draw(userChoice, compChoice){
     result_p.innerHTML = `${letterConverter(userChoice)} equals ${letterConverter(compChoice)}. It's a Draw`;
 };
 
-// Function to display result of one round
 
 function playRound(userChoice){
 
@@ -109,10 +95,6 @@ function main(){
             playRound(button.id);
         });
     }));
-
 };
 
-
-
 main()
-
