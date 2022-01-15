@@ -47,9 +47,11 @@ function win(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} beats ${letterConverter(compChoice)}. You Win`;
 
+
     if(userScore == 5){
         game_over();
     };
+
 
 };
 
@@ -59,9 +61,11 @@ function lose(userChoice, compChoice){
     comp_span.innerHTML = compScore;
     result_p.innerHTML = `${letterConverter(userChoice)} loses to ${letterConverter(compChoice)}. You Lost`;
 
+
     if(compScore == 5){
         game_over();
     };
+
 };
 
 function draw(userChoice, compChoice){
@@ -105,7 +109,10 @@ function main(){
             playRound(button.id);
         });
     }));
+
 };
 
 
+
 main()
+
