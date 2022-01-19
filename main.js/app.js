@@ -9,7 +9,7 @@ const result_p = document.querySelector('.result > p');
 
 function computerPlay(){
     let options = ["r", "p", "s"];
-    let computerSelection = options[Math.floor(Math.random(options)*options.length)];
+    let computerSelection = options[Math.floor(Math.random()*options.length)];
 
     return(computerSelection);
 
